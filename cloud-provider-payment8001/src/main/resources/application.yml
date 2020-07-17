@@ -19,4 +19,4 @@ mybatis:
   # mapper 文件目录
   mapper-locations: classpath*:mapper/*.xml
   # 实体类报名
-  type-aliases-package: com.tlh.springcloud.com.tlh.com.tlh.springcloud.entities
+  type-aliases-package: com.tlh.springcloud.com.tlh.com.tlh.com.tlh.springcloud.entities
