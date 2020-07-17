@@ -1,0 +1,22 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    # 当前数据库连接池类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # mysql驱动类
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #数据库连接参数
+    url: jdbc:mysql://localhost:3306/db_cloud_2020?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+
+# myBbatis 配置
+mybatis:
+  # mapper 文件目录
+  mapper-locations: classpath*:mapper/*.xml
+  # 实体类报名
+  type-aliases-package: com.tlh.springcloud.com.tlh.com.tlh.springcloud.entities
