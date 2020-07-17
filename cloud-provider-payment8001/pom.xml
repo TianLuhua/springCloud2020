@@ -15,7 +15,7 @@
         <dependency>
             <groupId>com.tlh.springcloud</groupId>
             <artifactId>cloud-api-commons</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${api.common.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
