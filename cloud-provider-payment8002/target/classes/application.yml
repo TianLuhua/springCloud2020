@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8002
 
 spring:
   application:
@@ -18,7 +18,7 @@ spring:
 # myBbatis 配置
 mybatis:
   # mapper 文件目录
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath*:mapper/*.xml
   # 实体类报名
   type-aliases-package: com.tlh.springcloud.entities
 
