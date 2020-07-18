@@ -9,6 +9,7 @@
         <module>cloud-consume-rorder80</module>
         <module>cloud-api-commons</module>
         <module>cloud-eureka-server7001</module>
+        <module>cloud-eureka-server7002</module>
     </modules>
 
     <groupId>com.tlh.springcloud</groupId>
