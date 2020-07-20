@@ -10,6 +10,7 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +47,11 @@ public class PaymentContorller {
         } else {
             return new CommonResult(400, "没有对应记录 id：" + id);
         }
+    }
+
+    @GetMapping("/payment/lb")
+    public String getPaymentLB() {
+       return String.valueOf(servicePort);
     }
 
     @GetMapping("/payment/discovery")

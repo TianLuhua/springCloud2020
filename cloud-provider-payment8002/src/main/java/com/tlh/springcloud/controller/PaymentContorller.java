@@ -24,7 +24,7 @@ public class PaymentContorller {
         int result = paymentService.create(payment);
         log.info("插入结果：" + result);
         if (result > 0) {
-            return new CommonResult(200, "插入数据库成功!servicePort:"+servicePort);
+            return new CommonResult(200, "插入数据库成功!servicePort:" + servicePort);
         } else {
             return new CommonResult(400, "插入数据库失败!");
         }
@@ -34,10 +34,16 @@ public class PaymentContorller {
     public CommonResult getPaymentById(@PathVariable("id") Long id) {
         Payment result = paymentService.getPaymentById(id);
         if (result != null) {
-            return new CommonResult(200, "查询ok!servicePort:"+servicePort, result);
+            return new CommonResult(200, "查询ok!servicePort:" + servicePort, result);
         } else {
             return new CommonResult(400, "没有对应记录 id：" + id);
         }
     }
+
+    @GetMapping("/payment/lb")
+    public String getPaymentLB() {
+        return String.valueOf(servicePort);
+    }
+
 
 }
