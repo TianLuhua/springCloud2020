@@ -14,6 +14,7 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -47,6 +48,16 @@ public class PaymentContorller {
         } else {
             return new CommonResult(400, "没有对应记录 id：" + id);
         }
+    }
+
+    @GetMapping("/payment/timeout")
+    public String paymentTimeOut(){
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return servicePort;
     }
 
     @GetMapping("/payment/lb")
