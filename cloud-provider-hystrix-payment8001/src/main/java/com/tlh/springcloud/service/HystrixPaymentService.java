@@ -1,13 +1,14 @@
 package com.tlh.springcloud.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.netflix.ribbon.proxy.annotation.Hystrix;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
 @Service
+@DefaultProperties(defaultFallback ="paymentGlobalFallBackMethod")
 public class HystrixPaymentService {
 
     /**
@@ -16,8 +17,10 @@ public class HystrixPaymentService {
      * @param id
      * @return
      */
+    @HystrixCommand
     public String paymentOK(Integer id) {
-        return "线程名："+Thread.currentThread().getName() + ";paymentOk" + ",id:" + id;
+        int i=10/0;
+        return "线程名：" + Thread.currentThread().getName() + ";paymentOk" + ",id:" + id;
     }
 
     /**
@@ -26,22 +29,26 @@ public class HystrixPaymentService {
      * @param id
      * @return
      */
-    //HystrixCommand如何使用参考：https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-javanica#configuration
-    @HystrixCommand(fallbackMethod = "paymentTimeOutFallBackHandler",commandProperties ={
+    //参考：https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-javanica#configuration
+    @HystrixCommand(fallbackMethod = "paymentTimeOutFallBackHandler", commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "4000")
-    } )
+    })
     public String paymentTimeOut(Integer id) {
-        Integer time=5;
+        Integer time = 5;
         try {
             TimeUnit.SECONDS.sleep(time);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return "线程名："+Thread.currentThread().getName() + ";paymentTimeOut" + ",id:" + id;
+        return "线程名：" + Thread.currentThread().getName() + ";paymentTimeOut" + ",id:" + id;
     }
 
-    public String paymentTimeOutFallBackHandler(Integer id){
-        return "线程名："+Thread.currentThread().getName() + ";paymentTimeOutFallBackHandler" + ",id:" + id;
+    public String paymentTimeOutFallBackHandler(Integer id) {
+        return "线程名：" + Thread.currentThread().getName() + ";paymentTimeOutFallBackHandler" + ",id:" + id;
+    }
+
+    public String paymentGlobalFallBackMethod() {
+        return "线程名：" + Thread.currentThread().getName() + ";paymentGlobalFallBackMethod";
     }
 
 }
