@@ -19,7 +19,6 @@ public class HystrixPaymentService {
      */
     @HystrixCommand
     public String paymentOK(Integer id) {
-        int i=10/0;
         return "线程名：" + Thread.currentThread().getName() + ";paymentOk" + ",id:" + id;
     }
 
