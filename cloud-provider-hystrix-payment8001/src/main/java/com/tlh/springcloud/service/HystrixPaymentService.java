@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.TimeUnit;
 
 @Service
-@DefaultProperties(defaultFallback ="paymentGlobalFallBackMethod")
+@DefaultProperties(defaultFallback = "paymentGlobalFallBackMethod")
 public class HystrixPaymentService {
 
     /**
@@ -50,4 +50,22 @@ public class HystrixPaymentService {
         return "线程名：" + Thread.currentThread().getName() + ";paymentGlobalFallBackMethod";
     }
 
+    //====================================服务熔断========================================//
+
+    @HystrixCommand(fallbackMethod = "paymentCircuitBreakFallBack",commandProperties = {
+            @HystrixProperty(name="circuitBreaker.enabled",value="true"),//是否开启服务熔断
+            @HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="10"),//请求此时
+            @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="10000"),//时间返回
+            @HystrixProperty(name="circuitBreaker.errorThresholdPercentage",value="60")//失败率达到多少触发熔断
+    })
+    public String paymentCircuitBreak(Integer id) {
+        if (id < 0) {
+            throw new RuntimeException("id 不能为负数!!");
+        }
+        return "线程名：" + Thread.currentThread().getName() + "\t" + "调用成功！id:" + id;
+    }
+
+    public String paymentCircuitBreakFallBack(Integer id) {
+        return "id 不能为负数。请稍后再试！！  id:" + id;
+    }
 }
