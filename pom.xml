@@ -14,6 +14,7 @@
         <module>cloud-consume-feign-rorder80</module>
         <module>cloud-provider-hystrix-payment8001</module>
         <module>cloud-consume-hystrix-rorder80</module>
+        <module>cloud-consume-hystrix-dashboard9001</module>
     </modules>
 
     <groupId>com.tlh.springcloud</groupId>
