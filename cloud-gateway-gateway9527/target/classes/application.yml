@@ -12,12 +12,14 @@ spring:
           enabled: true #开启从注册中心动态创建路由的功能，利用微服务名进行路由
       routes:
         - id: payment-8001 # 名称可以随便取，但是要唯一
-          uri: http://localhost:8001 #匹配后提供服务的路由地址
+#          uri: http://localhost:8001 #匹配后提供服务的路由地址
+          uri: lb://CLOUD-PAYMENT-SERVICE #匹配或提供的服务的路由地址
           predicates:
             - Path=/payment/get/** # 断言，就是说满足改条件才会进行路由转发。 **表示匹配后面的任意字符
 
         - id: payment-8002
-          uri: http://localhost:8002
+#          uri: http://localhost:8002
+          uri: lb://CLOUD-PAYMENT-SERVICE
           predicates:
             - Path=/payment/lb/**
 
