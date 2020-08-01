@@ -1,32 +1,22 @@
 server:
-  port: 4433
+  port: 3366
 
 spring:
   application:
-    name: cloud-config-center
-
+    name: config-client-3366
   cloud:
     config:
-      server:
-        git: #用github作为外部配置存储
-          uri: https://github.com/TianLuhua/SpringcloudConfig.git   #git 项目的仓库地址
-          search-paths:
-          - config  #项目目录
-      label: master #读取分支
+      label: master #分支名称
+      name: config #配置文件名
+      profile: dev # 读取配置中心后缀名称。 综上，master分支上的config-dev.yml的配置文件。 http://localhost:4433/master/config-dev.yml
+      uri: http://localhost:4433 #配置中心地址
 
-#增加RabbitMQ支持
+  #增加RabbitMQ支持
   rabbitmq:
     host: 47.99.109.141
     port: 5672
     username: tianluhua
     password: 123456
-
-#rabbitMq 相关配置，暴露bus刷新配置的端点
-management:
-  endpoints: #暴露bus刷新配置的端点
-    web:
-      exposure:
-        include: "bus-refresh"
 
 eureka:
   client:
@@ -38,3 +28,9 @@ eureka:
       #defaultZone: http://http://eureka7001.com:7001/eureka #单机版
       defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka  #集群版
 
+#暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -14,6 +14,19 @@ spring:
           - config  #项目目录
       label: master #读取分支
 
+#增加RabbitMQ支持
+  rabbitmq:
+    host: 47.99.109.141
+    port: 5672
+    username: tianluhua
+    password: 123456
+
+#rabbitMq 相关配置，暴露bus刷新配置的端点
+management:
+  endpoints: #暴露bus刷新配置的端点
+    web:
+      exposure:
+        include: "bus-refresh"
 
 eureka:
   client:
