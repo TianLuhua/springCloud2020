@@ -1,15 +1,7 @@
-server:
-  port: 10001
-
+#指定配置文件
 spring:
-  application:
-    name: cloud-alibaba-payment-service
-
-#nacos注册地址
-  cloud:
-    nacos:
-      discovery:
-        server-addr: localhost:8848
+  profiles:
+    active: dev
 
 #监控点
 management:
@@ -17,3 +9,4 @@ management:
     web:
       exposure:
         include: '*'
+
