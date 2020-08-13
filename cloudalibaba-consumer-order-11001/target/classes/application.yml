@@ -1,0 +1,19 @@
+server:
+  port: 11001
+
+spring:
+  application:
+    name: cloud-alibaba-order-service
+
+#nacos注册地址
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+#监控点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

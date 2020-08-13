@@ -20,6 +20,9 @@
         <module>cloud-config-client-3355</module>
         <module>cloud-config-center-3366</module>
         <module>cloud-config-client-3366</module>
+        <module>cloudalibaba-provider-payment-10001</module>
+        <module>cloudalibaba-provider-payment-10002</module>
+        <module>cloudalibaba-consumer-order-11001</module>
     </modules>
 
     <groupId>com.tlh.springcloud</groupId>

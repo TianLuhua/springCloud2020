@@ -1,0 +1,12 @@
+#指定配置文件
+spring:
+  profiles:
+    active: dev
+
+#监控点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
