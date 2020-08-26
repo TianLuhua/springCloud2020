@@ -22,6 +22,7 @@
         <module>cloudalibaba-provider-payment-10001</module>
         <module>cloudalibaba-provider-payment-10002</module>
         <module>cloudalibaba-consumer-order-11001</module>
+        <module>cloudalibaba-sentinel-service8401</module>
     </modules>
 
     <groupId>com.tlh.springcloud</groupId>
