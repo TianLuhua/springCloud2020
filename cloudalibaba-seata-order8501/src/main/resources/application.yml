@@ -1,0 +1,31 @@
+server:
+  port: 8501
+
+spring:
+  application:
+    name: seate-order-service
+
+  cloud:
+    nacos:
+      discovery:
+        #Nocas 注册地址
+        server-addr: localhost:8848
+
+    alibaba:
+      seata:
+        # Seata 服务分组，要与服务端nacos-config.txt中service.vgroup_mapping的后缀对应
+        tx-service-group: seate-order-service-group
+
+  # 数据源配置
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/seata_order?characterEncoding=UTF-8&serverTimezone=UTC
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: 123456
+
+logging:
+  level:
+    io:
+      seate: debug
+

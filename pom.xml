@@ -23,6 +23,9 @@
         <module>cloudalibaba-provider-payment-10002</module>
         <module>cloudalibaba-consumer-order-11001</module>
         <module>cloudalibaba-sentinel-service8401</module>
+        <module>cloudalibaba-seata-order8501</module>
+        <module>cloudalibaba-seata-storage8502</module>
+        <module>base-framework-mysql-support</module>
     </modules>
 
     <groupId>com.tlh.springcloud</groupId>
